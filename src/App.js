@@ -4,9 +4,12 @@ import './App.css';
 import Header from './components/header';
 import EmployeeList from './components/employee-list';
 import Footer from './components/footer';
+import { useEffect } from 'react';
 
 function App() {
-    const [employees, setEmployees] = useState([
+    const [employees, setEmployees] = useState(
+      JSON.parse(localStorage.getItem('employees')) ||
+      [
         {
             id: 1,
             fullName: "Bob Jones",
@@ -121,6 +124,12 @@ function App() {
     const selectedEmployees = showSelectedOnly ? 
                   [...selectedTeamMembers]
                 : [...employees];
+
+    useEffect(() =>{
+      localStorage.setItem('employees', JSON.stringify(employees));
+    }, [employees])
+
+    console.log()
 
   return (
     <div className="App">
