@@ -1,6 +1,8 @@
 function Header(){
     return (<header>
-        Header goes here
+        <h1 className="mt-4 p-5 bg-primary text-white rounded">
+            Header
+        </h1>
     </header>)
 }
 
