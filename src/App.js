@@ -1,14 +1,14 @@
 import './App.css';
 
 import Header from './components/header';
-import Content from './components/content';
+import EmployeeList from './components/employee-list';
 import Footer from './components/footer';
 
 function App() {
   return (
     <div className="App container">
       <Header />
-      <Content />
+      <EmployeeList />
       <Footer />
     </div>
   );
