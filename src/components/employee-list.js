@@ -7,7 +7,7 @@ import femaleProfile from '../images/femaleProfile.jpg';
 import maleProfile from '../images/maleProfile.jpg';
 
 function EmployeeList({selectedTeam, selectedEmployees, selectEmployee, handleChange, handleSelectClick}){
-    //const  = props
+    //    const  = props
     return (<main>
                 <Row className='justify-content-center mt-3 mb-3'>
                     <Col md={8}>
