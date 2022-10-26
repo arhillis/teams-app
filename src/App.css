@@ -3,3 +3,12 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.standout {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 1px 4px, rgb(51, 51, 51) 0 0 0 3px;
+}
