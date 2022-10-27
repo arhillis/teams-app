@@ -1,13 +1,13 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css';
 
-import Menu from './components/menu';
-import Header from './components/header';
 import EmployeeList from './components/employee-list';
+import ErrorPage from './components/error-page';
 import Footer from './components/footer';
+import Header from './components/header';
+import Menu from './components/menu';
 import Teams from './components/teams';
-import { useEffect } from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
     const [employees, setEmployees] = useState(
@@ -153,6 +153,7 @@ function App() {
                 />
           }></Route>
           <Route path='/teams' element={<Teams />}></Route>
+          <Route path='*' element={<ErrorPage />}></Route>
         </Routes>
         <Footer />
       </Router>
