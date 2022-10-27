@@ -1,10 +1,13 @@
 import {useState} from 'react';
 import './App.css';
 
+import Menu from './components/menu';
 import Header from './components/header';
 import EmployeeList from './components/employee-list';
 import Footer from './components/footer';
+import Teams from './components/teams';
 import { useEffect } from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
     const [employees, setEmployees] = useState(
@@ -133,18 +136,26 @@ function App() {
 
   return (
     <div className="App">
-      <Header 
-        selectedTeam={selectedTeam}
-        teamMemberCount={selectedTeamMembers.length}
-      />
-      <EmployeeList 
-        selectedTeam={selectedTeam}
-        selectedEmployees={selectedEmployees}
-        selectEmployee={selectEmployee}
-        handleChange={handleChange}
-        handleSelectClick={handleSelectClick}
-      />
-      <Footer />
+      <Router>
+        <Menu />
+        <Header 
+          selectedTeam={selectedTeam}
+          teamMemberCount={selectedTeamMembers.length}
+        />
+        <Routes>
+          <Route path='/' element={
+                <EmployeeList 
+                  selectedTeam={selectedTeam}
+                  selectedEmployees={selectedEmployees}
+                  selectEmployee={selectEmployee}
+                  handleChange={handleChange}
+                  handleSelectClick={handleSelectClick}
+                />
+          }></Route>
+          <Route path='/teams' element={<Teams />}></Route>
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }
