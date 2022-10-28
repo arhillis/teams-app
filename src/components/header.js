@@ -8,7 +8,10 @@ function Header({selectedTeam, teamMemberCount}){
                             Team Member Allocation 
                         </h1>
                         {selectedTeam && 
-                            (<h2>{selectedTeam} has {teamMemberCount} members</h2>)}
+                            (<h2>
+                                {selectedTeam} has {teamMemberCount} member
+                                {teamMemberCount === 1 ? '' : 's'}                                
+                            </h2>)}
                     </Col>
                 </Row>
             </header>)
