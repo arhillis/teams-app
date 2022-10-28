@@ -1,9 +1,8 @@
-import {Container, Row, Col, Accordion, Card} from 'react-bootstrap';
+import {Container, Row, Col, Accordion} from 'react-bootstrap';
 
 function Teams({employees, selectedTeam, setSelectedTeam}){
 
-
-    function groupTeamMembers(){
+    const groupTeamMembers = () => {
         const teams = {}
 
         employees.forEach(employee =>{
@@ -21,10 +20,35 @@ function Teams({employees, selectedTeam, setSelectedTeam}){
         return teams;
     }
 
-    const sortedTeamMembers = groupTeamMembers();
+    const handleTeamClick = (e) =>{
+        const {id} = e.currentTarget;
+        if(id !== selectedTeam)
+            setSelectedTeam(id);
+    }
+
+    const sortedTeams = groupTeamMembers();
 
     return (<Container>
-        Teams go here...
+        <Row className='justify-content-center'>
+            <Col md={8}>
+                <Accordion defaultActiveKey={selectedTeam}>
+                    {Object.keys(sortedTeams).map((key) =>(
+                          <Accordion.Item id={key} eventKey={key} key={key} onClick={handleTeamClick}>
+                            <Accordion.Header>{key}</Accordion.Header>
+                            <Accordion.Body>
+                                <ul>
+                                    {sortedTeams[key].members.map((member, i) =>(
+                                        <li key={i}>
+                                            {member.fullName} - {member.designation}
+                                        </li>
+                                    ))}
+                                </ul>                                
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    ))}
+                </Accordion>
+            </Col>
+        </Row>
     </Container>)
 }
 

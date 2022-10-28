@@ -152,7 +152,12 @@ function App() {
                   handleSelectClick={handleSelectClick}
                 />
           }></Route>
-          <Route path='/teams' element={<Teams />}></Route>
+          <Route path='/teams' element={
+                <Teams 
+                  employees={employees}
+                  selectedTeam={selectedTeam}
+                  setSelectedTeam={setSelectedTeam}
+          />}></Route>
           <Route path='*' element={<ErrorPage />}></Route>
         </Routes>
         <Footer />
