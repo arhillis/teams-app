@@ -3,8 +3,8 @@
 
 import { Row, Col, Card, Form } from 'react-bootstrap';
 
-import femaleProfile from '../images/femaleProfile.jpg';
-import maleProfile from '../images/maleProfile.jpg';
+import femaleProfile from '../../images/femaleProfile.jpg';
+import maleProfile from '../../images/maleProfile.jpg';
 
 function EmployeeList({selectedTeam, selectedEmployees, selectEmployee, handleChange, handleSelectClick}){
     //    const  = props
