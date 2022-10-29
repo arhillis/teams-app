@@ -18,4 +18,8 @@ p {
     text-align: center;
 }
 
-@media screen and (max-width: 960px) {}
+@media screen and (max-width: 768px) {
+    .col-md-6 {
+        padding: 2rem;
+    }
+}
