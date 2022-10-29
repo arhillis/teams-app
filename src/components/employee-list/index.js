@@ -17,11 +17,15 @@ function EmployeeList({selectedTeam, selectedEmployees, selectEmployee, handleCh
                 </Row>
                 <Row className='justify-content-center mt-3 mb-3'>
                     <Col md={8}>
-                        <div className="cards">
+                        <Row className="cards">
                             {selectedEmployees.map(employee => 
                                 <EmployeeCard key={employee.id} employee={employee} selectEmployee={selectEmployee} selectedTeam={selectedTeam}/>
                             )}
-                        </div>
+                        
+                        {/* <div>
+                            
+                        </div> */}
+                        </Row>
                     </Col>
                 </Row>
     </main>)
