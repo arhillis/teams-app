@@ -15,8 +15,7 @@ function App() {
   const initialState = {
     selectedTeam: 'TeamA',
     showSelectedOnly: false,
-    employees: JSON.parse(localStorage.getItem('employees')) || defaultEmployees,
-    selectedEmployees: null
+    employees: JSON.parse(localStorage.getItem('employees')) || defaultEmployees
   };
 
   const reducer = (state, action) =>{
@@ -72,14 +71,19 @@ function App() {
         dispactch({type: 'SELECT_EMPLOYEE', payload: newEmployeeList})
     }
 
-    
+    const setSelectedTeam = (team) =>{
+      dispactch({type: 'SELECT_TEAM', payload: team})
+    }
+  
+  const selectedTeamMembers = state.employees.filter(employee => employee.teamName === state.selectedTeam);
+  const selectedEmployees = state.showSelectedOnly ? selectedTeamMembers : state.employees;
 
   return (<div className='App'>
             <Router>
               <Menu />
               <Header 
                 selectedTeam={state.selectedTeam}
-                teamMemberCount={state.selectedEmployees.length}
+                teamMemberCount={selectedTeamMembers.length}
               />
               <Routes>
                 <Route path='/' element={<EmployeeList 
@@ -87,10 +91,12 @@ function App() {
                   handleChange={handleChange}
                   handleSelectClick={handleSelectClick}
                   selectEmployee={selectEmployee}
-                  selectedEmployees={state.showSelectedOnly ? state.selectedEmployees : state.employees}
+                  selectedEmployees={selectedEmployees}
                 />}></Route>
                 <Route path='/teams' element={<Teams 
-                  employees={state.employees}
+                  employees={state.employees}  
+                  selectedTeam={state.selectedTeam}
+                  setSelectedTeam={setSelectedTeam}
                 />}></Route>
                 <Route path='*' element={<ErrorPage />}></Route>
               </Routes>
@@ -121,8 +127,7 @@ function App() {
   //         
   //               
   //                 
-  //                 selectedTeam={selectedTeam}
-  //                 setSelectedTeam={setSelectedTeam}
+
   //         
   //         
   //       
